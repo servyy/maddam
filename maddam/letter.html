@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Letter to Maddam</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html, body {
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100vh;
+    font-family:'Comic Sans MS', cursive, sans-serif;
+    color:#000;
+    background:url('background.jpg') no-repeat center top;
+    background-size:cover;
+
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    flex-direction:column;
+
+    overflow-x:hidden;
+}
+
+/* Letter container */
+.letter-container{
+    margin-top:40px;
+    padding:20px;
+
+    width:85%;
+    max-width:600px;
+
+    text-align:center;
+    font-size:4.5vw; /* responsive text */
+    line-height:1.7em;
+
+    background:rgba(255,255,255,0.65); /* soft readable background */
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+
+    backdrop-filter:blur(4px);
+}
+
+/* Desktop font fix */
+@media (min-width:768px){
+    .letter-container{
+        font-size:18px;
+    }
+}
+
+/* Bread image */
+#bread{
+    display:block;
+    margin:20px auto 0 auto;
+
+    width:30vw;
+    max-width:120px;
+}
+
+/* Paragraph spacing */
+p{
+    margin-bottom:18px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="letter-container">
+
+<p>Dear Maddam,</p>
+
+<p>
+It’s crazy to think it’s been three years since we first met, just two strangers in an online game, and now here we are, still sending cat reels, funny reels, and the occasional horror reel that you hate so much, lol. Honestly, your reaction to those ghost reels never gets old.
+</p>
+
+<p>
+You’ve shared me your art, shared your cooking experiments, and somehow still manage to be a chess master (wow wow woww) and a singer (🧐🧐🧐). I don’t know how you do it, but you somehow balance everything, your words, your actions, and your kindness, so that nobody ever feels hurt. You’re the kind of friend who comforts me when I’m a complete mess, and I don’t say it enough, but it really means a lot 🙂
+</p>
+
+<p>
+As you step into this new chapter with college coming up, I just want to wish you the best of luck, you deserve all the success for coming this far. I hope your days are full of laughter, challenges you crush like you do everyday, and more reels than you can handle.
+</p>
+
+<p>
+Thanks for being you, Maddam. Here’s to many more years of memes, art, chaos, and everything in between. And… Happy Birthday, of course 😏🎉
+</p>
+
+<p><b>Batman</b></p>
+
+<img src="bread.jpg" id="bread" alt="Bread">
+
+</div>
+
+</body>
+</html>

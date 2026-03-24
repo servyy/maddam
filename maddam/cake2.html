@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Birthday Surprise!</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    min-height:100vh;
+    background:#fff;
+    font-family:'Comic Sans MS', cursive, sans-serif;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+}
+
+/* Birthday Text */
+#birthday-text{
+    margin-top:20px;
+    text-align:center;
+    font-size:7vw;
+    color:#ff69b4;
+    text-shadow:2px 2px 6px #aaa;
+    animation:pop 1s ease-out;
+}
+
+@keyframes pop{
+    0%{transform:scale(0);opacity:0;}
+    60%{transform:scale(1.2);opacity:1;}
+    100%{transform:scale(1);}
+}
+
+/* Image stack */
+.image-container{
+    position:relative;
+    width:60vw;
+    margin-top:20px;
+}
+
+/* Cake */
+#cake{
+    width:60vw;
+    max-width:260px;
+    display:block;
+    margin:0 auto;
+    position:relative;
+    z-index:2;
+}
+
+/* Cat behind cake */
+#cat{
+    width:35vw;
+    max-width:150px;
+    position:absolute;
+    bottom:-5px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:1;
+}
+
+/* Envelope section */
+.envelope-container{
+    margin-top:40px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    cursor:pointer;
+}
+
+/* Envelope */
+#envelope{
+    width:18vw;
+    max-width:80px;
+    transition:transform .3s ease;
+}
+
+#envelope:active{
+    transform:scale(1.15) rotate(-5deg);
+}
+
+/* Letter popup */
+#letter{
+    width:65vw;
+    max-width:260px;
+    padding:15px;
+    background:#fff8dc;
+    border:2px solid #ff69b4;
+    border-radius:8px;
+    margin-top:-8px;
+    text-align:center;
+    font-size:4vw;
+    color:#333;
+    box-shadow:2px 2px 12px rgba(0,0,0,.2);
+    opacity:0;
+    transform:translateY(-20px) scaleY(0);
+    transition:.5s ease;
+}
+
+#letter.show{
+    opacity:1;
+    transform:translateY(0) scaleY(1);
+}
+
+/* Confetti */
+.confetti{
+    width:10px;
+    height:10px;
+    position:absolute;
+    top:-20px;
+    border-radius:50%;
+    animation:fallOnce linear forwards;
+}
+
+@keyframes fallOnce{
+    0%{transform:translateY(0) rotate(0deg);opacity:1;}
+    100%{transform:translateY(110vh) rotate(360deg);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="birthday-text">🎉 Happy Birthday Maddamm! 🎉</div>
+
+<div class="image-container">
+    <img src="cat.jpg" id="cat">
+    <img src="cake.jpg" id="cake">
+</div>
+
+<div class="envelope-container">
+    <img src="envelope.jpg" id="envelope">
+    <div id="letter">
+        <p>Click me if you want bread 💌</p>
+    </div>
+</div>
+
+<script>
+
+/* Confetti */
+const colors=['#ffcc00','#ff6347','#ff69b4','#ffa500','#7cfc00'];
+
+for(let i=0;i<50;i++){
+    const conf=document.createElement('div');
+    conf.classList.add('confetti');
+    conf.style.backgroundColor=colors[Math.floor(Math.random()*colors.length)];
+    conf.style.left=Math.random()*100+'vw';
+    conf.style.width=5+Math.random()*10+'px';
+    conf.style.height=conf.style.width;
+    conf.style.animationDuration=(2+Math.random()*2)+'s';
+
+    document.body.appendChild(conf);
+
+    conf.addEventListener('animationend',()=>{
+        conf.remove();
+    });
+}
+
+/* Envelope interaction */
+const envelope=document.getElementById('envelope');
+const letter=document.getElementById('letter');
+
+function openEnvelope(){
+    envelope.style.transform='scale(1.2) rotate(-5deg)';
+
+    setTimeout(()=>{
+        envelope.style.transform='scale(1) rotate(0deg)';
+    },300);
+
+    letter.classList.add('show');
+}
+
+/* Works for both phone and desktop */
+envelope.addEventListener('click',openEnvelope);
+envelope.addEventListener('touchstart',openEnvelope);
+
+letter.addEventListener('click',()=>{
+    window.location.href='letter.html';
+});
+
+</script>
+
+</body>
+</html>
